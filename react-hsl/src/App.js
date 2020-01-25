@@ -114,21 +114,26 @@ class App extends React.Component {
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes();
     return (
-      <div className="App">
-        <h1>Timetables from Eficode office to Kumpula</h1>
-        <h2>Current time: {time}</h2>
-        <table align="center">
-          <tr>
-            <th>Leave work</th>
-            <th>Method</th>
-            <th>Destination</th>
-            <th>Transportation time</th>
-            <th>Transportation method</th>
-            <th>Transportation ID</th>
-          </tr>
-          {this.createTable()}
-        </table>
-      </div>
+        <div className="App">
+          <h1>Timetables from Eficode office to Kumpula</h1>
+          <h2>Current time: {time}</h2>
+          <table align="center">
+            <caption></caption>
+            <thead>
+              <tr>
+                <th>Leave work</th>
+                <th>Method</th>
+                <th>Destination</th>
+                <th>Transportation time</th>
+                <th>Transportation method</th>
+                <th>Transportation ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.createTable()}
+            </tbody>
+          </table>
+        </div>
     );
   }
 }
