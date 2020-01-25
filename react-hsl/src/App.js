@@ -67,12 +67,19 @@ class App extends React.Component {
       var startTimes = [];
       var next = [];
       var nextTimes = [];
+      
       for(var i = 0; i < itineraries.length; i++) {
         start.push(itineraries[i].legs[0].mode);
-        startTimes.push(itineraries[i].legs[0].startTime);
+        var date = new Date(itineraries[i].legs[0].startTime);
+        var hours = date.getHours();
+        var minutes = "0" + date.getMinutes();
+        startTimes.push(hours + ':' + minutes.substr(-2));
         if(itineraries[i].legs.length > 1) {
           next.push(itineraries[i].legs[1].mode);
-          nextTimes.push(itineraries[i].legs[1].startTime)
+          date = new Date(itineraries[i].legs[1].startTime);
+          hours = date.getHours();
+          minutes = "0" + date.getMinutes();
+          nextTimes.push(hours + ':' + minutes.substr(-2))
         }
         else {
           next.push('End');
@@ -103,8 +110,14 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Timetables from Eficode office to Kumpula</h1>
-        <table>
-        {this.createTable()}
+        <table align="center">
+          <tr>
+            <th>Leave work</th>
+            <th>Method</th>
+            <th>Transportation time</th>
+            <th>Transportation method</th>
+          </tr>
+          {this.createTable()}
         </table>
       </div>
     );
