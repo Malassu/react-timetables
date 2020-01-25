@@ -139,7 +139,7 @@ class App extends React.Component {
               <tr>
                 <th>Leave work</th>
                 <th>Method</th>
-                <th>Departure at</th>
+                <th>Transportation from</th>
                 <th>Departure time</th>
                 <th>Transportation method</th>
                 <th>Transportation ID</th>
