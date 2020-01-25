@@ -19,7 +19,7 @@ class App extends React.Component {
   }
   
   get_timetables = () => {
-    fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
+    fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', { //fetch data via HSL API
       method: 'POST',
       headers: {
         "Content-Type": "application/graphql"
@@ -75,6 +75,7 @@ class App extends React.Component {
         var minutes = "0" + date.getMinutes();
         startTimes.push(hours + ':' + minutes.substr(-2));
         destinations.push(itineraries[i].legs[0].to.name);
+
         if(itineraries[i].legs.length > 1) {
           next.push(lowerCase(itineraries[i].legs[1].mode));
           date = new Date(itineraries[i].legs[1].startTime);
@@ -83,6 +84,7 @@ class App extends React.Component {
           nextTimes.push(hours + ':' + minutes.substr(-2));
           transIDs.push(itineraries[i].legs[1].trip.routeShortName + ', ' + itineraries[i].legs[1].trip.tripHeadsign);
         }
+
         else {
           next.push('End');
           nextTimes.push('End');
@@ -95,7 +97,9 @@ class App extends React.Component {
   };
 
   createTable = () => {
+
     var table = [];
+
     for(var i = 0; i < this.state.start.length; i++) {
       var columns = [];
       columns.push(<td>{this.state.startTimes[i]}</td>);
@@ -106,18 +110,24 @@ class App extends React.Component {
       columns.push(<td>{this.state.transIDs[i]}</td>);
       table.push(<tr>{columns}</tr>);
     }
+
     return table;
+
   }
 
   render () {
+
     this.get_timetables();
     var today = new Date();
     var mins = today.getMinutes();
     var digit = "";
+
     if(mins < 10) {
       digit = "0"
     }
+
     var time = today.getHours() + ":" + digit + mins;
+
     return (
         <div className="App">
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/css/uikit.min.css" />
@@ -129,8 +139,8 @@ class App extends React.Component {
               <tr>
                 <th>Leave work</th>
                 <th>Method</th>
-                <th>Destination</th>
-                <th>Transportation time</th>
+                <th>Departure at</th>
+                <th>Departure time</th>
                 <th>Transportation method</th>
                 <th>Transportation ID</th>
               </tr>
