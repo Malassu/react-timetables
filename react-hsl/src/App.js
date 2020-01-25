@@ -112,12 +112,18 @@ class App extends React.Component {
   render () {
     this.get_timetables();
     var today = new Date();
-    var time = today.getHours() + ":" + today.getMinutes();
+    var mins = today.getMinutes();
+    var digit = "";
+    if(mins < 10) {
+      digit = "0"
+    }
+    var time = today.getHours() + ":" + digit + mins;
     return (
         <div className="App">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/css/uikit.min.css" />
           <h1>Timetables from Eficode office to Kumpula</h1>
           <h2>Current time: {time}</h2>
-          <table align="center">
+          <table className="uk-table-striped" align="center">
             <caption></caption>
             <thead>
               <tr>
