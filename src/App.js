@@ -25,8 +25,8 @@ class App extends React.Component {
         "Content-Type": "application/graphql"
       },
       body: `{ plan(
-          from: {lat: 60.2716403915943, lon: 24.84663514090327}
-          to: {lat: 60.169301684811906, lon: 24.93325791874904}
+          from: {lat: 60.169281, lon: 24.925942}
+          to: {lat: 60.205081, lon: 24.961217}
           numItineraries: 6
           transportModes: [{mode: BUS}, {mode: RAIL}, {mode:TRAM}, {mode: SUBWAY}, {mode:WALK}]
         ) {
@@ -131,13 +131,13 @@ class App extends React.Component {
     return (
         <div className="App">
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/css/uikit.min.css" />
-          <h1>Kuohukuja public transport timetable</h1>
+          <h1>Timetables from Eficode office to Kumpula</h1>
           <h2>Current time: {time}</h2>
           <table className="uk-table-striped" align="center">
             <caption></caption>
             <thead>
               <tr>
-                <th>Leave home</th>
+                <th>Leave work</th>
                 <th>Method</th>
                 <th>Transportation from</th>
                 <th>Departure time</th>
