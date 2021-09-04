@@ -102,7 +102,7 @@ class App extends React.Component {
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/css/uikit.min.css" />
           <h1>Kuohukuja public transport timetable</h1>
           <h2>Current time: {this.state.timestamp}</h2>
-          <button onclick={this.updateTimetables}>Update</button>
+          <button onClick={this.updateTimetables}>Update</button>
           <table className="uk-table-striped" align="center">
             <caption></caption>
             <thead>
