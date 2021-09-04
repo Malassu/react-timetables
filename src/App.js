@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import { TIMETABLE_QUERY } from './queries'
+import getTimestamp from './Utils/getTimestamp'
 
 function lowerCase(string) {
   return string.charAt(0) + string.slice(1).toLowerCase();
@@ -14,48 +16,27 @@ class App extends React.Component {
       destinations: [],
       next: [],
       nextTimes: [],
-      transIDs: []
+      transIDs: [],
+      timestamp: ''
     };
   }
-  
-  get_timetables = () => {
+
+  componentDidMount() {
+    this.updateTimetables();
+  }
+
+  updateTimetables = () => {
+    this.getTimetables();
+    this.setState({ timestamp: getTimestamp() })
+  }
+
+  getTimetables = () => {
     fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', { //fetch data via HSL API
       method: 'POST',
       headers: {
         "Content-Type": "application/graphql"
       },
-      body: `{ plan(
-          from: {lat: 60.2716403915943, lon: 24.84663514090327}
-          to: {lat: 60.169301684811906, lon: 24.93325791874904}
-          numItineraries: 6
-          transportModes: [{mode: BUS}, {mode: RAIL}, {mode:TRAM}, {mode: SUBWAY}, {mode:WALK}]
-        ) {
-          itineraries{
-            walkDistance,
-            duration,
-            legs {
-              mode
-              startTime
-              endTime
-              from {
-                name
-                stop {
-                  code
-                  name
-                }
-              },
-              to {
-                name
-              },
-              trip {
-                tripHeadsign
-                routeShortName
-              },
-              distance
-            }
-          }
-        }
-      }`
+      body: TIMETABLE_QUERY
     })
     .then(res => res.json())
     .then(json => {
@@ -91,7 +72,7 @@ class App extends React.Component {
           transIDs.push('End');
         }
       }
-      this.setState({start: start, startTimes: startTimes, destinations: destinations, next: next, nextTimes: nextTimes, transIDs: transIDs});
+      this.setState({ start: start, startTimes: startTimes, destinations: destinations, next: next, nextTimes: nextTimes, transIDs: transIDs });
 
     });
   };
@@ -116,23 +97,12 @@ class App extends React.Component {
   }
 
   render () {
-
-    this.get_timetables();
-    var today = new Date();
-    var mins = today.getMinutes();
-    var digit = "";
-
-    if(mins < 10) {
-      digit = "0"
-    }
-
-    var time = today.getHours() + ":" + digit + mins;
-
     return (
         <div className="App">
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.0/dist/css/uikit.min.css" />
           <h1>Kuohukuja public transport timetable</h1>
-          <h2>Current time: {time}</h2>
+          <h2>Current time: {this.state.timestamp}</h2>
+          <button onclick={this.updateTimetables}>Update</button>
           <table className="uk-table-striped" align="center">
             <caption></caption>
             <thead>

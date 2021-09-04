@@ -1,12 +1,14 @@
-FROM mhart/alpine-node:11 as builder
-WORKDIR /react-hsl
-COPY . .
-RUN npm install react-scripts -g --silent
-RUN yarn install
-RUN yarn run build
+FROM node:13.12.0-alpine
 
-FROM mhart/alpine-node
-RUN yarn global add serve
-WORKDIR /react-hsl
-COPY --from=builder /react-hsl/build .
-CMD ["serve", "-p", "80", "-s", "."]doc
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+RUN npm install react-scripts@3.4.1 -g --silent
+
+COPY . ./
+
+CMD ["npm", "start"]
+
