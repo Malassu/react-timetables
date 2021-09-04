@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/react-timetables/static/css/main.0bc26515.chunk.css",
-    "main.js": "/react-timetables/static/js/main.e340ee4c.chunk.js",
-    "main.js.map": "/react-timetables/static/js/main.e340ee4c.chunk.js.map",
+    "main.js": "/react-timetables/static/js/main.d485fff0.chunk.js",
+    "main.js.map": "/react-timetables/static/js/main.d485fff0.chunk.js.map",
     "runtime-main.js": "/react-timetables/static/js/runtime-main.486384e6.js",
     "runtime-main.js.map": "/react-timetables/static/js/runtime-main.486384e6.js.map",
-    "static/js/2.b01a399d.chunk.js": "/react-timetables/static/js/2.b01a399d.chunk.js",
-    "static/js/2.b01a399d.chunk.js.map": "/react-timetables/static/js/2.b01a399d.chunk.js.map",
+    "static/js/2.7d296c78.chunk.js": "/react-timetables/static/js/2.7d296c78.chunk.js",
+    "static/js/2.7d296c78.chunk.js.map": "/react-timetables/static/js/2.7d296c78.chunk.js.map",
     "index.html": "/react-timetables/index.html",
     "static/css/main.0bc26515.chunk.css.map": "/react-timetables/static/css/main.0bc26515.chunk.css.map",
-    "static/js/2.b01a399d.chunk.js.LICENSE.txt": "/react-timetables/static/js/2.b01a399d.chunk.js.LICENSE.txt"
+    "static/js/2.7d296c78.chunk.js.LICENSE.txt": "/react-timetables/static/js/2.7d296c78.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.486384e6.js",
-    "static/js/2.b01a399d.chunk.js",
+    "static/js/2.7d296c78.chunk.js",
     "static/css/main.0bc26515.chunk.css",
-    "static/js/main.e340ee4c.chunk.js"
+    "static/js/main.d485fff0.chunk.js"
   ]
 }
